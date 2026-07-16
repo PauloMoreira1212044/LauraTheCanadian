@@ -7,6 +7,10 @@ import RibbonBow from "./RibbonBow";
 import Balloons from "./Balloons";
 import { fireConfettiBurst, driftConfetti } from "@/lib/confetti";
 
+// Prefix for static assets so the photo resolves correctly when the site is
+// hosted under a sub-path (e.g. GitHub Pages: /LauraTheCanadian). Empty locally.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 /* ------------------------------------------------------------------ *
  * Animation timeline (seconds). Everything is driven off these numbers,
  * so tweaking the pacing of the reveal is a one-stop edit.
@@ -169,7 +173,7 @@ export default function GiftReveal() {
                       the reveal is instant with no flicker. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/imgLaura.jpeg"
+                    src={`${BASE_PATH}/imgLaura.jpeg`}
                     alt="Laura"
                     draggable={false}
                     decoding="async"

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* Very soft pastel gradient backdrop — cheerful but calm. */
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #fff2f7 0%, transparent 60%),
+    radial-gradient(1000px 700px at 100% 0%, #eefaf8 0%, transparent 55%),
+    radial-gradient(900px 900px at 50% 120%, #f3efff 0%, transparent 60%),
+    #fff7fb;
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent accidental text selection / callouts when tapping the box on mobile. */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Gentle idle wiggle for the bow before the box is opened.
+   Disabled automatically for reduced-motion users below. */
+@keyframes bow-wiggle {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.animate-bow-wiggle {
+  animation: bow-wiggle 1.8s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+/* Slow balloon float for the post-reveal "keep it alive" background. */
+@keyframes balloon-float {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-24px);
+  }
+}
+
+.animate-balloon-float {
+  animation: balloon-float 6s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bow-wiggle,
+  .animate-balloon-float {
+    animation: none !important;
+  }
+}
